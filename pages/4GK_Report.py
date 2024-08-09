@@ -361,9 +361,9 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
 
 
 
-    player_pic = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/GK_Photos/temp.png')
-    #yellow_card = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/pages/Yellow_Card.png')
-    #red_card = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/pages/Red_Card.png')
+    player_pic = mpimg.imread('GK_Photos/temp.png')
+    #yellow_card = mpimg.imread('pages/Yellow_Card.png')
+    #red_card = mpimg.imread('pages/Red_Card.png')
 
     with col1:
         inner_columns = st.columns(2)
@@ -404,7 +404,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         )
         
         with inner_columns[1]:
-            image_path = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/pages/Veo.jpg"  # Replace with the path to your image
+            image_path = "pages/Veo.jpg"  # Replace with the path to your image
 
             def load_image(image_path):
                 with open(image_path, "rb") as image_file:
