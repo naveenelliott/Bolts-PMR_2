@@ -84,11 +84,11 @@ def WingerFunction(dataframe):
         date = more_data['Match Date']
         
         if team_name in ['Boston Bolts U13', 'Boston Bolts U14']:
-            wing_df = pd.read_csv("PostMatchReviewApp_v2/Thresholds/WingerThresholds1314.csv")
+            wing_df = pd.read_csv("Thresholds/WingerThresholds1314.csv")
         elif team_name in ['Boston Bolts U15', 'Boston Bolts U16']:
-            wing_df = pd.read_csv("PostMatchReviewApp_v2/Thresholds/WingerThresholds1516.csv")
+            wing_df = pd.read_csv("Thresholds/WingerThresholds1516.csv")
         elif team_name in ['Boston Bolts U17', 'Boston Bolts U19']:
-            wing_df = pd.read_csv("PostMatchReviewApp_v2/Thresholds/WingerThresholds1719.csv")
+            wing_df = pd.read_csv("Thresholds/WingerThresholds1719.csv")
 
         
 
