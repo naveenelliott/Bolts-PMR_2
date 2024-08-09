@@ -19,7 +19,7 @@ from plotly_football_pitch import make_pitch_figure, PitchDimensions
 import plotly_football_pitch as pfp
 import plotly.graph_objs as go
 
-st.set_page_config(layout='wide')
+#st.set_page_config(layout='wide')
 
 # adding in data from PMRApp
 combined_df = st.session_state["combined_df"]
