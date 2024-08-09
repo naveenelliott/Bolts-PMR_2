@@ -80,7 +80,7 @@ st.markdown(f"<h4 style='text-align: center;'>Date: {selected_date}&nbsp;&nbsp; 
 # printing the three columns
 col1, col2, col3 = st.columns(3)
 
-folder_path = 'PostMatchReviewApp_v3/xG Input Files'
+folder_path = 'xG Input Files'
 
 # Find all CSV files in the folder
 csv_files = glob.glob(os.path.join(folder_path, '*.csv'))
@@ -115,7 +115,7 @@ for index, row in fc_python.iterrows():
 
 
 # Path to the folder containing CSV files
-folder_path = 'PostMatchReviewApp_v3/Actions PSD'
+folder_path = 'Actions PSD'
 
 # Find all CSV files in the folder
 csv_files = glob.glob(os.path.join(folder_path, '*.csv'))
@@ -683,7 +683,7 @@ entire_xT.reset_index(inplace=True)
 combined_entire_df = pd.merge(overall_xg, entire_xT, on=['Team', 'Match Date', 'Opposition'], how='outer')
 combined_entire_df['Unique Opp and Date'] = combined_entire_df['Opposition'] + ' (' + combined_entire_df['Match Date'] + ')'
 
-possession = pd.read_csv('PostMatchReviewApp_v3/Veo Data/Veo Analysis - Formatted Games.csv')
+possession = pd.read_csv('Veo Data/Veo Analysis - Formatted Games.csv')
 possession = possession[['Date', 'Opponent', 'Possession ']]
 possession.dropna(inplace=True)
 possession['Possession '] = possession['Possession '].str.replace('%', '', regex=False).astype(float)
@@ -1287,7 +1287,7 @@ with col1:
     st.pyplot(fig)
 
 # plotting key
-image = Image.open('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/pages/Key3.png')
+image = Image.open('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/pages/Key3.png')
 
 with col1:
     st.image(image, use_column_width=True)
