@@ -106,11 +106,11 @@ def CMFunction(dataframe):
         date = more_data['Match Date']
 
         if team_name in ['Boston Bolts U13', 'Boston Bolts U14']:
-            cm_df = pd.read_csv("C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v2/Thresholds/CenterMidfieldThresholds1314.csv")
+            cm_df = pd.read_csv("C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/Thresholds/CenterMidfieldThresholds1314.csv")
         elif team_name in ['Boston Bolts U15', 'Boston Bolts U16']:
-            cm_df = pd.read_csv("C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v2/Thresholds/CenterMidfieldThresholds1516.csv")
+            cm_df = pd.read_csv("C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/Thresholds/CenterMidfieldThresholds1516.csv")
         elif team_name in ['Boston Bolts U17', 'Boston Bolts U19']:
-            cm_df = pd.read_csv("C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v2/Thresholds/CenterMidfieldThresholds1719.csv")
+            cm_df = pd.read_csv("C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/Thresholds/CenterMidfieldThresholds1719.csv")
         
 
 
