@@ -35,7 +35,7 @@ gk_name = st.session_state["selected_gk"]
 gk_data = gk_data.loc[gk_data['Player Full Name'] == gk_name]
 gk_data.drop(columns=['In Possession', 'Out Possession'], inplace=True)
 
-in_n_out_df = pd.read_csv('PostMatchReviewApp_v3/pages/InAndOutOfPossessionGoalsGK.csv')
+in_n_out_df = pd.read_csv('pages/InAndOutOfPossessionGoalsGK.csv')
 
 gk_info = pd.merge(gk_data, in_n_out_df, on=['Player Full Name', 'Date', 'Opposition', 'Team Name'], how='inner')
 gk_info.reset_index(drop=True, inplace=True)
@@ -76,7 +76,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
 
     col1, col2 = st.columns(2)
 
-    folder_path = 'PostMatchReviewApp_v3/xG Input Files'
+    folder_path = 'xG Input Files'
 
     # Find all CSV files in the folder
     csv_files = glob.glob(os.path.join(folder_path, '*.csv'))
@@ -111,7 +111,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
 
 
     # Path to the folder containing CSV files
-    folder_path = 'PostMatchReviewApp_v3/Actions PSD'
+    folder_path = 'Actions PSD'
 
     # Find all CSV files in the folder
     csv_files = glob.glob(os.path.join(folder_path, '*.csv'))
@@ -361,9 +361,9 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
 
 
 
-    player_pic = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/GK_Photos/temp.png')
-    #yellow_card = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/pages/Yellow_Card.png')
-    #red_card = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/pages/Red_Card.png')
+    player_pic = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/GK_Photos/temp.png')
+    #yellow_card = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/pages/Yellow_Card.png')
+    #red_card = mpimg.imread('C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/pages/Red_Card.png')
 
     with col1:
         inner_columns = st.columns(2)
@@ -404,7 +404,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         )
         
         with inner_columns[1]:
-            image_path = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/pages/Veo.jpg"  # Replace with the path to your image
+            image_path = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/pages/Veo.jpg"  # Replace with the path to your image
 
             def load_image(image_path):
                 with open(image_path, "rb") as image_file:
