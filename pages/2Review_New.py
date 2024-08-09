@@ -1178,7 +1178,7 @@ for i in range(nrows):
                     add = 1
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/IsGoalScorer.png')
+                img = mpimg.imread('pages/IsGoalScorer.png')
                 ax.imshow(img, extent=[positions[j] - 0.5,
                                      positions[j] + 0.5, i-.1, i + 1.1])
                 stored.append(i)
@@ -1188,7 +1188,7 @@ for i in range(nrows):
                     add = 1
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/IsDribbler.png')
+                img = mpimg.imread('pages/IsDribbler.png')
                 ax.imshow(img, extent=[positions[j] - 0.5 + add,
                                      positions[j] + 0.5 + add, i-.1, i + 1.1])
                 stored.append(i)
@@ -1197,7 +1197,7 @@ for i in range(nrows):
                     add = 1 + add
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/IsLineBreaks.png')
+                img = mpimg.imread('pages/IsLineBreaks.png')
                 ax.imshow(img, extent=[positions[j] - 0.5 + add,
                                      positions[j] + 0.5 + add, i-.1, i + 1.0])
                 stored.append(i)
@@ -1206,7 +1206,7 @@ for i in range(nrows):
                     add = 1 + add
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/IsRegain.png')
+                img = mpimg.imread('pages/IsRegain.png')
                 ax.imshow(img, extent=[positions[j] - 0.5 + add,
                                      positions[j] + 0.5 + add, i-.1, i + 1.1])
                 stored.append(i)
@@ -1215,7 +1215,7 @@ for i in range(nrows):
                     add = 1 + add
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/IsTotalActioner.png')
+                img = mpimg.imread('pages/IsTotalActioner.png')
                 ax.imshow(img, extent=[positions[j] - 0.5 + add,
                                      positions[j] + 0.5 + add, i-.1, i + 1.1])
                 stored.append(i)
@@ -1224,7 +1224,7 @@ for i in range(nrows):
                     add = 1 + add
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/IsAssister.png')
+                img = mpimg.imread('pages/IsAssister.png')
                 ax.imshow(img, extent=[positions[j] - 0.5 + add,
                                      positions[j] + 0.5 + add, i-.1, i + 1.1])
                 stored.append(i)
@@ -1233,7 +1233,7 @@ for i in range(nrows):
                     add = 1 + add
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/IsMostxG.png')
+                img = mpimg.imread('pages/IsMostxG.png')
                 ax.imshow(img, extent=[positions[j] - 0.5 + add,
                                      positions[j] + 0.5 + add, i-.1, i + 1.1])
                 stored.append(i)   
@@ -1242,7 +1242,7 @@ for i in range(nrows):
                     add = 1 + add
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/Red_Card.png')
+                img = mpimg.imread('pages/Red_Card.png')
                 ax.imshow(img, extent=[positions[j] - 0.4 + add,
                                      positions[j] + 0.4 + add, i+.05, i + .95])
                 stored.append(i) 
@@ -1251,7 +1251,7 @@ for i in range(nrows):
                     add = 1 + add
                 else:
                     add = 0
-                img = mpimg.imread('Bolts Post-Match/SVG_Icon_Files/Yellow_Card.png')
+                img = mpimg.imread('pages/Yellow_Card.png')
                 ax.imshow(img, extent=[positions[j] - 0.5 + add,
                                      positions[j] + 0.5 + add, i-.1, i + 1.1])
                 stored.append(i)
