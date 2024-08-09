@@ -419,6 +419,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
             <a href="{url}" target="_blank">
                 <img src="data:image/jpeg;base64,{image_base64}" style="cursor: pointer; width: 75px;"/>  <!-- Adjust width as needed -->
             </a>
+            <br><br>
             """,
             unsafe_allow_html=True
             )
