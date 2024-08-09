@@ -611,7 +611,18 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     final_game_grade = final_game_grade.sort_values('Match Date').reset_index(drop=True)
     final_game_grade = final_game_grade[final_game_grade['Match Date'] <= selected_date]
 
-    
+    st.markdown(
+            """
+            <div style='display: block; text-align: left;'>
+                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>In Possession Goals:</strong> {in_possession_goals}</span><br><br>
+                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Out of Possession Goals:</strong> {out_possession_goals}</span><br><br>
+                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Coach Notes:</strong> {coach_notes}</span>
+            </div>
+            """.format(in_possession_goals=in_possession_goals, 
+                    out_possession_goals=out_possession_goals, 
+                    coach_notes=coach_notes),
+            unsafe_allow_html=True
+        )
 
     
     fig = plottingStatistics(final_game_grade, 'Final Grade', date_wanted=selected_date)
@@ -630,18 +641,6 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         fig2 = plottingStatistics(end_overall, 'Pass Completion ', date_wanted=selected_date)
         st.plotly_chart(fig2)
 
-    st.markdown(
-            """
-            <div style='display: block; text-align: left;'>
-                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>In Possession Goals:</strong> {in_possession_goals}</span><br><br>
-                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Out of Possession Goals:</strong> {out_possession_goals}</span><br><br>
-                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Coach Notes:</strong> {coach_notes}</span>
-            </div>
-            """.format(in_possession_goals=in_possession_goals, 
-                    out_possession_goals=out_possession_goals, 
-                    coach_notes=coach_notes),
-            unsafe_allow_html=True
-        )
 
 else:
     st.title("Goalkeeper Report is NOT AVAILABLE. Please fill out the coach requirements")
