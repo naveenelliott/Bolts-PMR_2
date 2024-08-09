@@ -57,7 +57,7 @@ def main():
         if submit_button:
             save_input(in_possession, out_possession)
             st.success("Input updated!")
-            st.experimental_rerun()  # Rerun to refresh the displayed DataFrame
+            st.rerun()  # Rerun to refresh the displayed DataFrame
 
 if __name__ == "__main__":
     main()
