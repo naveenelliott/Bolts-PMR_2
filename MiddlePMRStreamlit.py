@@ -6,7 +6,7 @@ from GettingPSDTeamData import getting_PSD_team_data
 
 
 def GettingCompLevel(team, opp, date):
-    raw_data = pd.read_csv("PostMatchReviewApp_v2/Veo Data/Veo Analysis - Formatted Games.csv")
+    raw_data = pd.read_csv("Veo Data/Veo Analysis - Formatted Games.csv")
     raw_data.dropna(inplace=True)
     raw_data['Date'] = pd.to_datetime(raw_data['Date']).dt.strftime('%m/%d/%Y')
     age_group_map = {
@@ -38,7 +38,7 @@ def GettingCompLevel(team, opp, date):
 
 
 def MiddlePMRStreamlit(team, opp, date, avg_opp_xg, avg_bolts_xg, our_xT, avg_xT, stdev_xT, regain_time):
-    raw_data = pd.read_csv("PostMatchReviewApp_v2/Veo Data/Veo Analysis - Formatted Games.csv")
+    raw_data = pd.read_csv("Veo Data/Veo Analysis - Formatted Games.csv")
     raw_data.drop(columns=['Competition'], inplace=True)
     raw_data.dropna(inplace=True)
     raw_data['Date'] = pd.to_datetime(raw_data['Date']).dt.strftime('%m/%d/%Y')
