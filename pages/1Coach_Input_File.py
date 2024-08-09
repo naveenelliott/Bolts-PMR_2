@@ -22,7 +22,7 @@ def save_input(in_possession, out_possession):
     overall.loc[condition, 'In Possession'] = in_possession
     overall.loc[condition, 'Out Possession'] = out_possession
     limited_df = overall[['Team Name', 'Date', 'Opposition', 'In Possession', 'Out Possession']]
-    limited_df.to_csv('PostMatchReviewApp_v3/pages/InAndOutOfPossessionGoals.csv', index=False)
+    limited_df.to_csv('pages/InAndOutOfPossessionGoals.csv', index=False)
     st.session_state['overall_df'] = overall
 
 def main():
