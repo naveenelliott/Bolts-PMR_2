@@ -81,7 +81,7 @@ def plottingStatistics(dataframe, statistic, date_wanted):
     return fig
 
 def gettingGameGrade(dataframe, xT_raw_grade):
-    gk_df = pd.read_csv("PostMatchReviewApp_v3/Thresholds/GoalkeeperThresholds.csv")
+    gk_df = pd.read_csv("Thresholds/GoalkeeperThresholds.csv")
     dataframe.reset_index(drop=True, inplace=True)
     dataframe['Total Saves'] = dataframe['Save Held'] + dataframe['Save Parried']
     dataframe['SOT Against'] = dataframe['Save Held'] + dataframe['Save Parried'] + dataframe['Goal Against']
