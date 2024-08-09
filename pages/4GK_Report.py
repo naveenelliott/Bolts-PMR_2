@@ -617,6 +617,8 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     fig = plottingStatistics(final_game_grade, 'Final Grade', date_wanted=selected_date)
     st.plotly_chart(fig)
 
+    col1, col2 = st.columns(2)
+
     with col1:
         fig = plottingStatistics(end_overall, 'GA-xGA', date_wanted=selected_date)
         st.plotly_chart(fig)
