@@ -636,6 +636,8 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         st.plotly_chart(fig)
         fig2 = plottingStatistics(end_overall, 'xT per Pass', date_wanted=selected_date)
         st.plotly_chart(fig2)
+        fig3 = plottingStatistics(end_overall, 'Progr Regain ', date_wanted=selected_date)
+        st.plotly_chart(fig3)
     with col2:
         fig = plottingStatistics(end_overall, 'Save %', date_wanted=selected_date)
         st.plotly_chart(fig)
