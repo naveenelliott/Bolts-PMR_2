@@ -9,33 +9,45 @@ def plottingStatistics(dataframe, statistic, date_wanted):
     fig = go.Figure()
 
     dataframe['More Opposition'] = 'vs ' + dataframe['Opposition']
+    dataframe['Match Date'] = pd.to_datetime(dataframe['Match Date']).dt.strftime('%m/%d/%Y')
 
-    # Line plot for the specified statistic over time
+    # Add the trendline to the plot
     fig.add_trace(go.Scatter(
         x=dataframe['Match Date'],
         y=dataframe[statistic],
-        mode='lines+markers',
-        name=f'{statistic} over time',
-        line=dict(color='black'),
-        marker=dict(color='black', size=6),
-        showlegend=False,  # Remove legend
-        text=dataframe['More Opposition'],  # Set hover text to Opposition
-        hoverinfo='text'  # Display only the text (Opposition) in the hover tooltip
+        mode='lines',
+        name='Trendline',
+        line=dict(color='black', dash='dash'),
+        showlegend=False  # Show the legend for the trendline
     ))
 
-    # Highlight the selected date point
-    highlight = dataframe[dataframe['Match Date'] == date_wanted]
-    if not highlight.empty:
-        fig.add_trace(go.Scatter(
-            x=highlight['Match Date'],
-            y=highlight[statistic],
-            mode='markers',
-            name='',
-            marker=dict(color='lightblue', size=12, symbol='circle'),
-            showlegend=False,  # Ensure no legend for this point
-            text=dataframe['More Opposition'],  # Set hover text to Opposition
-            hoverinfo='text'  # Display only the text (Opposition) in the hover tooltip
-        ))
+    # Line plot for the specified statistic over time
+    for index, row in dataframe.iterrows():
+        if row['Match Date'] == date_wanted:
+            fig.add_trace(go.Scatter(
+                x=[row['Match Date']],
+                y=[row[statistic]],
+                mode='markers',
+                name='',
+                marker=dict(color='lightblue', size=12, symbol='circle'),
+                showlegend=False,  # Ensure no legend for this point
+                text=row['More Opposition'] + ' (' + str(round(row[statistic], 4)) + ' )',  # Set hover text to Opposition
+                hoverinfo='text'  # Display only the text (Opposition) in the hover tooltip
+            ))
+        else:    
+            fig.add_trace(go.Scatter(
+                x=[row['Match Date']],
+                y=[row[statistic]],
+                mode='lines+markers',
+                name=f'{statistic} over time',
+                line=dict(color='black'),
+                marker=dict(color='black', size=6),
+                showlegend=False,  # Remove legend
+                text=row['More Opposition'] + ' (' + str(round(row[statistic], 4)) + ' )',  # Set hover text to Opposition
+                hoverinfo='text'  # Display only the text (Opposition) in the hover tooltip
+            ))
+
+
 
     # Customize the layout
     fig.update_layout(
