@@ -612,18 +612,49 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     final_game_grade = final_game_grade[final_game_grade['Match Date'] <= selected_date]
 
     with col2:
+        image_in_possession = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/GK_Photos/In Possession Goals.jpg"  
+        image_out_possession = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/GK_Photos/Out Possession Goals.jpg" 
+        image_coach_notes = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/GK_Photos/VasilyModel.jpg" 
+
+        def load_image(image_path):
+            with open(image_path, "rb") as image_file:
+                return base64.b64encode(image_file.read()).decode('utf-8')
+
+        image_in_possession_base64 = load_image(image_in_possession)
+        image_out_possession_base64 = load_image(image_out_possession)
+        image_coach_notes_base64 = load_image(image_coach_notes)
+
         st.markdown(
-            """
-            <div style='display: block; text-align: left;'>
-                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>In Possession Goals:</strong> {in_possession_goals}</span><br><br>
-                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Out of Possession Goals:</strong> {out_possession_goals}</span><br><br>
-                <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Coach Notes:</strong> {coach_notes}</span>
+            f"""
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <a href="{image_in_possession}" target="_blank">
+                        <img src="data:image/jpeg;base64,{image_in_possession_base64}" style="cursor: pointer; width: 75px;"/>  <!-- Adjust width as needed -->
+                    </a>
+                    <div style="margin-left: 10px;">
+                        <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>In Possession Goals:</strong> {in_possession_goals}</span>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <a href="{image_out_possession}" target="_blank">
+                        <img src="data:image/jpeg;base64,{image_out_possession_base64}" style="cursor: pointer; width: 75px;"/>  <!-- Adjust width as needed -->
+                    </a>
+                    <div style="margin-left: 10px;">
+                        <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Out of Possession Goals:</strong> {out_possession_goals}</span>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <a href="{image_coach_notes}" target="_blank">
+                        <img src="data:image/jpeg;base64,{image_coach_notes_base64}" style="cursor: pointer; width: 75px;"/>  <!-- Adjust width as needed -->
+                    </a>
+                    <div style="margin-left: 10px;">
+                        <span style='font-family: Arial; font-size: 13pt; color: black;'><strong>Coach Notes:</strong> {coach_notes}</span>
+                    </div>
+                </div>
             </div>
-            """.format(in_possession_goals=in_possession_goals, 
-                    out_possession_goals=out_possession_goals, 
-                    coach_notes=coach_notes),
+            """,
             unsafe_allow_html=True
-            )
+        )
 
     
     fig = plottingStatistics(final_game_grade, 'Final Grade', date_wanted=selected_date)
