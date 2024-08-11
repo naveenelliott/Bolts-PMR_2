@@ -612,9 +612,9 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     final_game_grade = final_game_grade[final_game_grade['Match Date'] <= selected_date]
 
     with col2:
-        image_in_possession = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/GK_Photos/In Possession Goals.jpg"  
-        image_out_possession = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/GK_Photos/Out Possession Goals.jpg" 
-        image_coach_notes = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/GK_Photos/VasilyModel.jpg" 
+        image_in_possession = "GK_Photos/In Possession Goals.jpg"  
+        image_out_possession = "GK_Photos/Out Possession Goals.jpg" 
+        image_coach_notes = "GK_Photos/VasilyModel.jpg" 
 
         def load_image(image_path):
             with open(image_path, "rb") as image_file:
