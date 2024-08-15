@@ -741,7 +741,7 @@ with col3:
             player_html = f"<span style='color: green; font-size: 10pt;'>{index}</span> <span style='color: green; font-size: 10pt;'>{round(cat, 2)}</span>"
             st.write(player_html, unsafe_allow_html=True)
     with inner_columns[1]:
-        image_path = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/pages/Veo.jpg"  # Replace with the path to your image
+        image_path = "pages/Veo.jpg"  # Replace with the path to your image
 
         def load_image(image_path):
             with open(image_path, "rb") as image_file:
