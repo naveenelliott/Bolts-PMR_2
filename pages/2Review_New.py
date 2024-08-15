@@ -13,7 +13,6 @@ from StrikerGradeStreamlit import StrikerFunction
 from GKGradeStreamlit import GKFunction
 import matplotlib.image as mpimg
 from MiddlePMRStreamlit import MiddlePMRStreamlit
-from MiddlePMRStreamlit import GettingCompLevel
 from PIL import Image
 from PositivesAndNegativesStreamlit import PositivesAndNegativesStreamlit
 import glob
