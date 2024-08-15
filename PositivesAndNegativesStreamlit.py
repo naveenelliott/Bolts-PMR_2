@@ -17,7 +17,7 @@ def formatData(rows):
     return game
 
 def PositivesAndNegativesStreamlit(team_select, opp_select, date_select, comp_opp_select, further_df):
-    if comp_opp_select != '10 Game Rolling Avg':
+    if comp_opp_select != '5 Game Rolling Avg' and comp_opp_select != 'Seasonal Rolling Avg':
         overall = getting_PSD_team_data()
         # manually changing St Louis because weekly report and actions don't align
         overall.loc[overall['Opposition'] == 'St Louis', 'Date'] = '2023-12-09'
