@@ -729,7 +729,7 @@ top3, low3 = PositivesAndNegativesStreamlit(team_select=our_team, opp_select=opp
 change = ['Goal Against', 'Shots on Target Against', 'Loss of Poss', 'Foul Conceded', 'Opp xG per Shot', 'Time Until Regain']
 
 with col3:
-    inner_columns = st.columns(2)
+    inner_columns = st.columns(3)
 
     with inner_columns[0]:
         html_string = ( "<span style='font-family: Arial; font-size: 10pt; color: green; "
@@ -741,6 +741,26 @@ with col3:
             player_html = f"<span style='color: green; font-size: 10pt;'>{index}</span> <span style='color: green; font-size: 10pt;'>{round(cat, 2)}</span>"
             st.write(player_html, unsafe_allow_html=True)
     with inner_columns[1]:
+        image_path = "C:/Users/Owner/Downloads/SoccermaticsForPython-master/SoccermaticsForPython-master/PostMatchReviewApp_v3/pages/Veo.jpg"  # Replace with the path to your image
+
+        def load_image(image_path):
+            with open(image_path, "rb") as image_file:
+                return base64.b64encode(image_file.read()).decode('utf-8')
+
+        # Get the base64-encoded image
+        image_base64 = load_image(image_path)
+
+        # HTML and CSS for making the image a clickable link
+        st.markdown(
+        f"""
+        <a href="{url}" target="_blank">
+            <img src="data:image/jpeg;base64,{image_base64}" style="cursor: pointer; width: 100px;"/>  <!-- Adjust width as needed -->
+        </a>
+        <br><br>  <!-- Add two line breaks here -->
+        """,
+        unsafe_allow_html=True
+        )
+    with inner_columns[2]:
         html_string = ( "<span style='font-family: Arial; font-size: 10pt; color: red; "
             "text-decoration: underline; text-decoration-color: red;'><b>Negatives</b></span>")
         st.write(html_string, unsafe_allow_html=True)
