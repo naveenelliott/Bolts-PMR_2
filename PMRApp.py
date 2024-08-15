@@ -4,7 +4,7 @@ from GettingFullActions import UpdatingActions
 from GettingPSDLineupData import getting_PSD_lineup_data
 
 # Setting the title of the PMR App in web browser
-st.set_page_config(page_title='Bolts Post-Match Review App', page_icon = 'PostMatchReviewApp_v2/pages/Boston_Bolts.png')
+st.set_page_config(page_title='Bolts Post-Match Review App', page_icon = 'pages/Boston_Bolts.png')
 
 
 st.sidebar.success('Select a page above.')
@@ -47,25 +47,36 @@ st.title("Bolts Post-Match Review App")
 st.markdown("Select the Team, Opponent, and Date (Optional) to See the Post-Match Review")
 
 teams = list(combined_df['Team Name'].unique())
-teams.sort()
 if "selected_team" not in st.session_state:
     st.session_state['selected_team'] = teams[0]
-selected_team = st.selectbox('Choose the Bolts MLS Next Team:', teams, index=teams.index(st.session_state['selected_team']))
-combined_df = combined_df.loc[combined_df['Team Name'] == selected_team]
+else:
+    # Update the session state if a different team is selected
+    selected_team = st.selectbox('Choose the Bolts Team:', teams)
+    if selected_team != st.session_state['selected_team']:
+        st.session_state['selected_team'] = selected_team
+combined_df = combined_df.loc[combined_df['Team Name'] == st.session_state['selected_team']]
 
 opps = list(combined_df['Opposition'].unique())
+# Use session state to store the selected opponent and update it whenever a new opponent is selected
 if "selected_opp" not in st.session_state:
     st.session_state["selected_opp"] = opps[0] 
-selected_opp = st.selectbox('Choose the Opposition:', opps, index=opps.index(st.session_state["selected_opp"]))
-combined_df = combined_df.loc[combined_df['Opposition'] == selected_opp]
+else:
+    selected_opp = st.selectbox('Choose the Opposition:', opps)
+    if selected_opp != st.session_state["selected_opp"]:
+        st.session_state["selected_opp"] = selected_opp
+combined_df = combined_df.loc[combined_df['Opposition'] == st.session_state['selected_opp']]
 
-combined_df['Date'] = pd.to_datetime(combined_df['Date'])
-combined_df['Date'] = combined_df['Date'].dt.strftime('%m/%d/%Y')
+combined_df['Date'] = pd.to_datetime(combined_df['Date']).dt.strftime('%m/%d/%Y')
 date = list(combined_df['Date'].unique())
-if 'date' not in st.session_state:
+if 'selected_date' not in st.session_state:
     st.session_state['selected_date'] = date[0]
-selected_date = st.selectbox('Choose the Date (if necessary)', date, index=date.index(st.session_state['selected_date']))
-combined_df = combined_df.loc[combined_df['Date'] == selected_date]
+else:
+    selected_date = st.selectbox('Choose the Date (if necessary)', date)
+    if selected_date != st.session_state['selected_date']:
+        st.session_state['selected_date'] = selected_date
+
+# Filter the DataFrame based on the selected date
+combined_df = combined_df.loc[combined_df['Date'] == st.session_state['selected_date']]
 
 # Initialize prev_player in session state if not already present
 
