@@ -83,9 +83,6 @@ combined_df = combined_df.loc[combined_df['Date'] == st.session_state['selected_
 st.session_state["combined_df"] = combined_df
 combined_df_copy = combined_df.copy()
 st.session_state['combined_df_copy'] = combined_df_copy
-st.session_state["selected_team"] = selected_team
-st.session_state["selected_opp"] = selected_opp
-st.session_state["selected_date"] = selected_date
 
 # TEMPORARY
 gk_dataframe = combined_df.loc[combined_df['Position Tag'] == 'GK'].reset_index(drop=True)
