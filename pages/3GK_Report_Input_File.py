@@ -18,7 +18,7 @@ def save_input(in_possession, out_possession, coach_notes, veo_hyperlink):
     overall_gk.loc[condition, 'Vasily Notes'] = coach_notes
     overall_gk.loc[condition, 'Veo Hyperlink GK'] = veo_hyperlink
     limited_df_gk = overall_gk[['Player Full Name', 'Team Name', 'Date', 'Opposition', 'In Possession', 'Out Possession', 'Vasily Notes', 'Veo Hyperlink GK']]
-    limited_df_gk.to_csv('PostMatchReviewApp_v3/pages/InAndOutOfPossessionGoalsGK.csv', index=False)
+    limited_df_gk.to_csv('pages/InAndOutOfPossessionGoalsGK.csv', index=False)
     st.session_state['complete_gk_df'] = overall_gk
 
 def main():
@@ -36,7 +36,7 @@ def main():
     opponent = st.session_state['selected_opp']
     st.markdown(f"<h3 style='text-align: left;'>{opponent} Goalkeeper Report</h3>", unsafe_allow_html=True)
 
-    in_and_out_goals = pd.read_csv('PostMatchReviewApp_v3/pages/InAndOutOfPossessionGoalsGK.csv')
+    in_and_out_goals = pd.read_csv('pages/InAndOutOfPossessionGoalsGK.csv')
 
     condition = (
     (in_and_out_goals['Team Name'] == st.session_state['selected_team']) &
