@@ -31,6 +31,7 @@ from GettingPSDGradeData import getting_PSD_grade_data
 from plotly_football_pitch import make_pitch_figure, PitchDimensions
 import plotly_football_pitch as pfp
 import plotly.graph_objs as go
+import base64
 
 
 # Setting a wide layout
