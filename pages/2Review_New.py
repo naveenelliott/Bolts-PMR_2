@@ -647,7 +647,8 @@ compare_opps = list(overall_df['Unique Opp and Date'].unique())
 
 if not closest_before.empty:
     closest_game = closest_before.iloc[-1]
-    compare_opps.append('10 Game Rolling Avg')
+    compare_opps.append('5 Game Rolling Avg')
+    compare_opps.append('Seasonal Rolling Avg')
 else:
     closest_game = closest_after.iloc[0]
 
