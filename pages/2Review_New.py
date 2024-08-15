@@ -71,8 +71,11 @@ if opp_shots == 0:
 bolts_score = player_data['Goal'].astype(int).sum()
 opp_score = player_data['Goal Against'].astype(int).sum()
 
-# getting the competition level from the Veo file
-comp_level = GettingCompLevel(selected_team, selected_opp, selected_date)
+comp_level = st.session_state['overall_df']
+comp_level = comp_level.loc[(comp_level['Team Name'] == selected_team) & (comp_level['Opposition'] == selected_opp) & (comp_level['Date'] == selected_date)]
+comp_level.reset_index(drop=True, inplace=True)
+url = comp_level.at[0, 'Veo Hyperlink']
+comp_level = comp_level.at[0, 'Competition Level']
 
 st.markdown(f"<h2 style='text-align: center;'>Bolts: {bolts_score}&nbsp;&nbsp;{selected_opp}: {opp_score}</h2>", unsafe_allow_html=True)
 st.markdown(f"<h4 style='text-align: center;'>Date: {selected_date}&nbsp;&nbsp; Comp Level: {comp_level}</h4>", unsafe_allow_html=True)
