@@ -45,7 +45,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     in_possession_goals = gk_info['In Possession'].iloc[0]
     out_possession_goals = gk_info['Out Possession'].iloc[0]
     coach_notes = gk_info['Vasily Notes'].iloc[0]
-    url = gk_info['Veo Hyperlink GK'].iloc[0]
+    url_gk = gk_info['Veo Hyperlink GK'].iloc[0]
 
     st.title(f"{gk_name} - Goalkeeper Report ({selected_team} vs {selected_opp})")
 
@@ -416,7 +416,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
             # HTML and CSS for making the image a clickable link
             st.markdown(
             f"""
-            <a href="{url}" target="_blank">
+            <a href="{url_gk}" target="_blank">
                 <img src="data:image/jpeg;base64,{image_base64}" style="cursor: pointer; width: 75px;"/>  <!-- Adjust width as needed -->
             </a>
             <br><br>
