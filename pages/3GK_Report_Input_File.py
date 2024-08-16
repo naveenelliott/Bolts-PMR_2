@@ -6,7 +6,6 @@ import numpy as np
 def save_input(in_possession, out_possession, coach_notes, veo_hyperlink):
 
     overall_gk = st.session_state['complete_gk_df']
-    st.write(overall_gk)
     condition = (
         (overall_gk['Team Name'] == st.session_state['selected_team']) &
         (overall_gk['Opposition'] == st.session_state['selected_opp']) &
