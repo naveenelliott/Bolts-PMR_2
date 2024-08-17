@@ -71,7 +71,7 @@ if opp_shots == 0:
 bolts_score = player_data['Goal'].astype(int).sum()
 opp_score = player_data['Goal Against'].astype(int).sum()
 
-comp_level = st.session_state['game_goals']
+comp_level = conn.read(worksheet='PMR', ttl=5)
 comp_level = comp_level.loc[(comp_level['Bolts Team'] == selected_team) & (comp_level['Opposition'] == selected_opp) & (comp_level['Match Date'] == selected_date)]
 comp_level.reset_index(drop=True, inplace=True)
 url = comp_level.at[0, 'Veo Hyperlink']
