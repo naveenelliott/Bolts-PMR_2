@@ -105,4 +105,3 @@ xyzservices==2024.6.0
 yolo==0.3.1
 gspread==5.9.0
 oauth2client==4.1.3
-streamlit-gsheets
