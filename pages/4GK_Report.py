@@ -386,7 +386,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     
     """
     
-        with col1:
+    with col1:
         inner_columns = st.columns(2)
 
         with inner_columns[0]:
