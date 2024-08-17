@@ -244,7 +244,8 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     """
     
     # Display the markdown
-    st.markdown(markdown_content, unsafe_allow_html=True)
+    with col1:
+      st.markdown(markdown_content, unsafe_allow_html=True)
 
     dimensions = PitchDimensions(pitch_length_metres=100, pitch_width_metres=100)
     fig1 = pfp.make_pitch_figure(
