@@ -424,6 +424,8 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
             unsafe_allow_html=True
         )
 
+        st.markdown("<br><hr><br>", unsafe_allow_html=True)
+
         
         st.markdown(markdown_content, unsafe_allow_html=True)
         
