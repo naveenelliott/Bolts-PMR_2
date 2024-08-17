@@ -21,7 +21,7 @@ selected_date = st.session_state['selected_date']
 # Establishing a Google Sheets connection
 conn = st.connection('gsheets', type=GSheetsConnection)
 
-existing_data = conn.read(worksheet='GK_Report', ttl=5)
+existing_data = conn.read(worksheet='GK_Report', ttl=0)
 existing_data.dropna(how='all', inplace=True)
 existing_data['Bolts Team'] = existing_data['Bolts Team'].fillna('').astype(str)
 existing_data['Opposition'] = existing_data['Opposition'].fillna('').astype(str)
