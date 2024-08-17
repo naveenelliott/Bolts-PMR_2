@@ -31,16 +31,19 @@ def goalkeeperHeatmap(df, gk_pname):
     df['Where'] = ''
 
     for index, row in df.iterrows():
-        if row['x'] <= 40:
-            df.at[index, 'Where'] = 'First Third'
-        elif row['x'] <= 80:
-            df.at[index, 'Where'] = 'Second Third'
+        if row['x'] <= 30:
+            df.at[index, 'Where'] = 'First Quarter'
+        elif row['x'] <= 60:
+            df.at[index, 'Where'] = 'Second Quarter'
+        elif row['x'] <= 90:
+            df.at[index, 'Where'] = 'Third Quarter'
         else:
-            df.at[index, 'Where'] = 'Final Third'
+            df.at[index, 'Where'] = 'Final Quarter'
             
-    first_third = round(df.loc[df['Where'] == 'First Third'].shape[0]/len(df) * 100, 0)
-    second_third = round(df.loc[df['Where'] == 'Second Third'].shape[0]/len(df) * 100, 0)
-    final_third = round(df.loc[df['Where'] == 'Final Third'].shape[0]/len(df) * 100, 0)
+    first_quarter = round(df.loc[df['Where'] == 'First Quarter'].shape[0]/len(df) * 100, 0)
+    second_quarter = round(df.loc[df['Where'] == 'Second Quarter'].shape[0]/len(df) * 100, 0)
+    third_quarter = round(df.loc[df['Where'] == 'Third Quarter'].shape[0]/len(df) * 100, 0)
+    fourth_quarter = round(df.loc[df['Where'] == 'Final Quarter'].shape[0]/len(df) * 100, 0)
 
     fig, ax = plt.subplots(figsize=(13.5, 8))
     pitch = Pitch(pitch_type="statsbomb", pitch_color="#FFFFFF", line_color="#000000")
@@ -49,14 +52,17 @@ def goalkeeperHeatmap(df, gk_pname):
 
     sns.kdeplot(data=df, x='x', y='y', cmap='Blues', shade=True, ax=ax, bw_adjust=0.7, alpha=0.5)
 
-    ax.annotate(f"First Third Actions\n{first_third}%", xy=(20, 40),
-                fontsize=17, color='black', ha='center', va='center', fontfamily='Comic Sans MS', 
+    ax.annotate(f"First Quarter Actions\n{first_quarter}%", xy=(15, 40),
+                fontsize=12, color='black', ha='center', va='center', fontfamily='Comic Sans MS', 
                 fontweight='bold', bbox=dict(facecolor='yellow', alpha=0.5, edgecolor='none'))
-    ax.annotate(f"Second Third Actions\n{second_third}%", xy=(60, 40),
-                fontsize=17, color='black', ha='center', va='center', fontfamily='Comic Sans MS',
+    ax.annotate(f"Second Quarter Actions\n{second_quarter}%", xy=(45, 40),
+                fontsize=12, color='black', ha='center', va='center', fontfamily='Comic Sans MS',
                 fontweight='bold', bbox=dict(facecolor='yellow', alpha=0.5, edgecolor='none'))
-    ax.annotate(f"Final Third Actions\n{final_third}%", xy=(100, 40),
-                fontsize=17, color='black', ha='center', va='center', fontfamily='Comic Sans MS',
+    ax.annotate(f"Third Quarter Actions\n{third_quarter}%", xy=(75, 40),
+                fontsize=12, color='black', ha='center', va='center', fontfamily='Comic Sans MS',
+                fontweight='bold', bbox=dict(facecolor='yellow', alpha=0.5, edgecolor='none'))
+    ax.annotate(f"Final Quarter Actions\n{third_quarter}%", xy=(105, 40),
+                fontsize=12, color='black', ha='center', va='center', fontfamily='Comic Sans MS',
                 fontweight='bold', bbox=dict(facecolor='yellow', alpha=0.5, edgecolor='none'))
     
     return fig
