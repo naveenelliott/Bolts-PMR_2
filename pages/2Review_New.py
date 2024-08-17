@@ -1316,13 +1316,13 @@ image = Image.open('pages/Key3.png')
 with col1:
     st.image(image, use_column_width=True)
 
-temp_overall_df = st.session_state['overall_df']
+temp_overall_df = st.session_state['game_goals']
 
 
-temp_overall_df = temp_overall_df.loc[(temp_overall_df['Team Name'] == selected_team) & (temp_overall_df['Opposition'] == selected_opp) & (temp_overall_df['Date'] == selected_date)]
+temp_overall_df = temp_overall_df.loc[(temp_overall_df['Bolts Team'] == selected_team) & (temp_overall_df['Opposition'] == selected_opp) & (temp_overall_df['Match Date'] == selected_date)]
 temp_overall_df.reset_index(drop=True, inplace=True)
-in_possession_goal = temp_overall_df['In Possession'][0]
-out_possession_goal = temp_overall_df['Out Possession'][0]
+in_possession_goal = temp_overall_df['In Possession Goals'][0]
+out_possession_goal = temp_overall_df['Out of Possession Goals'][0]
 
 
 with col2:
