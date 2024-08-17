@@ -379,8 +379,8 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     markdown_content = f"""
     
     
-    <div style="font-family: Arial, sans-serif; font-size: 20px; text-align: center;">
-        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xg_sum}
+    <div style="font-family: Arial, sans-serif; font-size: 17px; text-align: center;">
+        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xga_sum}
     </div>
     
     
