@@ -26,15 +26,10 @@ combined_df = combined_df.loc[combined_df['Team Name'].isin(bolts_allowed) & com
 
 combined_df.loc[combined_df['Player Full Name'] == 'Casey Powers', 'Position Tag'] = 'GK'
 gk_dataframe = combined_df.loc[combined_df['Position Tag'] == 'GK'].reset_index(drop=True)
-in_and_out_goals_gk = pd.read_csv('pages/InAndOutOfPossessionGoalsGK.csv')
-gk_dataframe = pd.merge(gk_dataframe, in_and_out_goals_gk, on=['Team Name', 'Opposition', 'Date', 'Player Full Name'], how='inner')
 gk_dataframe = gk_dataframe.drop_duplicates().reset_index(drop=True)
 st.session_state['complete_gk_df'] = gk_dataframe.copy()
 
 
-# THIS IS THE NEW STUFF, SHOULD BE IN VERSION 3
-in_and_out_goals = pd.read_csv('pages/InAndOutOfPossessionGoals.csv')
-combined_df = pd.merge(combined_df, in_and_out_goals, on=['Team Name', 'Opposition', 'Date'], how='inner')
 combined_df = combined_df.drop_duplicates().reset_index(drop=True)
 
 # creating a transferrable copy of the combined dataset
