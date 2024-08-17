@@ -377,12 +377,16 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     #red_card = mpimg.imread('pages/Red_Card.png')
 
     markdown_content = f"""
-    <div style="font-family: Arial, sans-serif; font-size: 17px;">
-        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xga_sum}
+    
+    
+    <div style="font-family: Arial, sans-serif; font-size: 20px; text-align: center;">
+        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xg_sum}
     </div>
+    
+    
     """
-
-    with col1:
+    
+        with col1:
         inner_columns = st.columns(2)
 
         with inner_columns[0]:
