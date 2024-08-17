@@ -33,7 +33,6 @@ gk_data = st.session_state['gk_df']
 
 gk_name = st.session_state["selected_gk"]
 gk_data = gk_data.loc[gk_data['Player Full Name'] == gk_name]
-gk_data.drop(columns=['In Possession', 'Out Possession'], inplace=True)
 
 in_n_out_df = st.session_state['game_goals_gk']
 in_n_out_df.rename(columns={'GK Name': 'Player Full Name', 
