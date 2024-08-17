@@ -238,7 +238,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     xga_sum = round(xg_sum, 2)
 
     markdown_content = f"""
-    <div style="font-family: Arial, sans-serif; font-size: 20px;">
+    <div style="font-family: Arial, sans-serif; font-size: 17px;">
         <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xga_sum}
     </div>
     """
@@ -421,7 +421,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         )
 
         
-        st.markdown(markdown_content, unsafe_allow_html=True)
+          st.markdown(markdown_content, unsafe_allow_html=True)
         
         with inner_columns[1]:
             image_path = "pages/Veo.jpg"  # Replace with the path to your image
