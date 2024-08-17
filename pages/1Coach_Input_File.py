@@ -93,5 +93,3 @@ st.write(f"In Possession Current Goals: {in_possession}")
 st.write(f"Out Possession Current Goals: {out_possession}")
 st.write(f"Veo Hyperlink: {veo_hyperlink}")
 st.write(f"Competition Level: {competition_level}")
-
-st.session_state['game_goals'] = updated_df.copy()
