@@ -73,7 +73,7 @@ bolts_score = player_data['Goal'].astype(int).sum()
 opp_score = player_data['Goal Against'].astype(int).sum()
 
 conn = st.connection('gsheets', type=GSheetsConnection)
-comp_level = conn.read(worksheet='PMR', ttl=5)
+comp_level = conn.read(worksheet='PMR')
 comp_level = comp_level.loc[(comp_level['Bolts Team'] == selected_team) & (comp_level['Opposition'] == selected_opp) & (comp_level['Match Date'] == selected_date)]
 comp_level.reset_index(drop=True, inplace=True)
 url = comp_level.at[0, 'Veo Hyperlink']
@@ -1319,7 +1319,7 @@ with col1:
     st.image(image, use_column_width=True)
 
 conn = st.connection('gsheets', type=GSheetsConnection)
-temp_overall_df = conn.read(worksheet='PMR', ttl=5)
+temp_overall_df = conn.read(worksheet='PMR')
 
 
 temp_overall_df = temp_overall_df.loc[(temp_overall_df['Bolts Team'] == selected_team) & (temp_overall_df['Opposition'] == selected_opp) & (temp_overall_df['Match Date'] == selected_date)]
