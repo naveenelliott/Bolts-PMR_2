@@ -243,9 +243,6 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     </div>
     """
     
-    # Display the markdown
-    with col1:
-      st.markdown(markdown_content, unsafe_allow_html=True)
 
     dimensions = PitchDimensions(pitch_length_metres=100, pitch_width_metres=100)
     fig1 = pfp.make_pitch_figure(
@@ -422,6 +419,9 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
             """.format(vars=red_cards),
             unsafe_allow_html=True
         )
+
+        
+        st.markdown(markdown_content, unsafe_allow_html=True)
         
         with inner_columns[1]:
             image_path = "pages/Veo.jpg"  # Replace with the path to your image
