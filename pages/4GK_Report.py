@@ -35,7 +35,12 @@ gk_name = st.session_state["selected_gk"]
 gk_data = gk_data.loc[gk_data['Player Full Name'] == gk_name]
 gk_data.drop(columns=['In Possession', 'Out Possession'], inplace=True)
 
-in_n_out_df = pd.read_csv('pages/InAndOutOfPossessionGoalsGK.csv')
+in_n_out_df = st.session_state['game_goals_gk']
+in_n_out_df.rename(columns={'GK Name': 'Player Full Name', 
+                            'Match Date': 'Date', 
+                            'Bolts Team': 'Team Name', 
+                            'Coach Notes': 'Vasily Notes', 
+                            'Veo Hyperlink': 'Veo Hyperlink GK'}, inplace=True)
 
 gk_info = pd.merge(gk_data, in_n_out_df, on=['Player Full Name', 'Date', 'Opposition', 'Team Name'], how='inner')
 gk_info.reset_index(drop=True, inplace=True)
