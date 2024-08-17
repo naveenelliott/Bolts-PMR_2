@@ -12,7 +12,7 @@ st.set_page_config(layout='wide')
 # Establishing a Google Sheets connection
 conn = st.connection('gsheets', type=GSheetsConnection)
 
-existing_data = conn.read(worksheet='PMR')
+existing_data = conn.read(worksheet='PMR', ttl=0)
 existing_data.dropna(how='all', inplace=True)
 existing_data['Bolts Team'] = existing_data['Bolts Team'].fillna('').astype(str)
 existing_data['Opposition'] = existing_data['Opposition'].fillna('').astype(str)
