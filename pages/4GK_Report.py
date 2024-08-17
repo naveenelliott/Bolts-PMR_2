@@ -421,7 +421,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         )
 
         
-          st.markdown(markdown_content, unsafe_allow_html=True)
+            st.markdown(markdown_content, unsafe_allow_html=True)
         
         with inner_columns[1]:
             image_path = "pages/Veo.jpg"  # Replace with the path to your image
