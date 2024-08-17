@@ -41,10 +41,10 @@ if match_exists:
 
     # Extract existing data to display
     if not index.empty:
-        in_possession = ''
-        out_possession = ''
-        veo_hyperlink = ''
-        competition_level = ''
+        in_possession = existing_data.loc[index, 'In Possession Goals'].values[0]
+        out_possession = existing_data.loc[index, 'Out of Possession Goals'].values[0]
+        veo_hyperlink = existing_data.loc[index, 'Veo Hyperlink'].values[0]
+        competition_level = existing_data.loc[index, 'Competition Level'].values[0]
 
 st.title("Setting In and Out of Possession Goals")
 
