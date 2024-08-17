@@ -236,12 +236,6 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     ga = gk_data['Goal Against'][0].astype(float)
 
     xga_sum = round(xg_sum, 2)
-
-    markdown_content = f"""
-    <div style="font-family: Arial, sans-serif; font-size: 17px;">
-        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xga_sum}
-    </div>
-    """
     
 
     dimensions = PitchDimensions(pitch_length_metres=100, pitch_width_metres=100)
@@ -382,6 +376,12 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     #yellow_card = mpimg.imread('pages/Yellow_Card.png')
     #red_card = mpimg.imread('pages/Red_Card.png')
 
+    markdown_content = f"""
+    <div style="font-family: Arial, sans-serif; font-size: 17px;">
+        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xga_sum}
+    </div>
+    """
+
     with col1:
         inner_columns = st.columns(2)
 
@@ -421,7 +421,7 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         )
 
         
-            st.markdown(markdown_content, unsafe_allow_html=True)
+        st.markdown(markdown_content, unsafe_allow_html=True)
         
         with inner_columns[1]:
             image_path = "pages/Veo.jpg"  # Replace with the path to your image
