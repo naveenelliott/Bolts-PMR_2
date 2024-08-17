@@ -61,7 +61,9 @@ with st.form("input_form"):
             st.stop()
         
         # Update existing data if match data exists
-        if index.any():
+        if (existing_data['Bolts Team'].str.contains(selected_team).any() & 
+    existing_data['Opposition'].str.contains(selected_opp).any() & 
+    existing_data['Match Date'].str.contains(selected_date).any()):
             existing_data.loc[index, 'In Possession Goals'] = in_possession
             existing_data.loc[index, 'Out of Possession Goals'] = out_possession
             existing_data.loc[index, 'Veo Hyperlink'] = veo_hyperlink
