@@ -18,6 +18,7 @@ from PlottingGKReport import plottingStatistics, gettingGameGrade, gkInvolvement
 from plotly_football_pitch import make_pitch_figure, PitchDimensions
 import plotly_football_pitch as pfp
 import plotly.graph_objs as go
+from streamlit_gsheets import GSheetsConnection
 
 #st.set_page_config(layout='wide')
 
@@ -34,7 +35,9 @@ gk_data = st.session_state['gk_df']
 gk_name = st.session_state["selected_gk"]
 gk_data = gk_data.loc[gk_data['Player Full Name'] == gk_name]
 
-in_n_out_df = st.session_state['game_goals_gk']
+
+conn = st.connection('gsheets', type=GSheetsConnection)
+in_n_out_df = conn.read(worksheet='GK_Report', ttl=5)
 in_n_out_df.rename(columns={'GK Name': 'Player Full Name', 
                             'Match Date': 'Date', 
                             'Bolts Team': 'Team Name', 
