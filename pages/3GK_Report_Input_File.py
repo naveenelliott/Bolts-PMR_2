@@ -100,4 +100,3 @@ st.write(f"Out Possession Current Goals: {out_possession}")
 st.write(f"Veo Hyperlink: {veo_hyperlink}")
 st.write(f"Competition Level: {coach_notes}")
 
-st.session_state['game_goals_gk'] = updated_df.copy()
