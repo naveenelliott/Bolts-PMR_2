@@ -3,9 +3,9 @@ import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
 # Getting the selected team, opponent, and date
-selected_team = st.session_state["selected_team"]
-selected_opp = st.session_state["selected_opp"]
-selected_date = st.session_state["selected_date"]
+selected_team = st.session_state.get("selected_team")
+selected_opp = st.session_state.get("selected_opp")
+selected_date = st.session_state.get("selected_date")
 
 st.set_page_config(layout='wide')
 
@@ -24,21 +24,27 @@ in_possession, out_possession, veo_hyperlink, competition_level = '', '', '', ''
 updated_df = pd.DataFrame()
 
 # Check if the selected match data already exists
-if (existing_data['Bolts Team'].str.contains(selected_team).any() & 
+match_exists = (
+    existing_data['Bolts Team'].str.contains(selected_team).any() & 
     existing_data['Opposition'].str.contains(selected_opp).any() & 
-    existing_data['Match Date'].str.contains(selected_date).any()):
+    existing_data['Match Date'].str.contains(selected_date).any()
+)
 
+if match_exists:
     index = existing_data[
         (existing_data['Bolts Team'] == selected_team) &
         (existing_data['Opposition'] == selected_opp) &
         (existing_data['Match Date'] == selected_date)
     ].index
 
+    updated_df = existing_data.copy()
+
     # Extract existing data to display
-    in_possession = existing_data.loc[index, 'In Possession Goals'].values[0]
-    out_possession = existing_data.loc[index, 'Out of Possession Goals'].values[0]
-    veo_hyperlink = existing_data.loc[index, 'Veo Hyperlink'].values[0]
-    competition_level = existing_data.loc[index, 'Competition Level'].values[0]
+    if not index.empty:
+        in_possession = ''
+        out_possession = ''
+        veo_hyperlink = ''
+        competition_level = ''
 
 st.title("Setting In and Out of Possession Goals")
 
@@ -59,9 +65,7 @@ with st.form("input_form"):
             st.stop()
         
         # Update existing data if match data exists
-        if (existing_data['Bolts Team'].str.contains(selected_team).any() & 
-    existing_data['Opposition'].str.contains(selected_opp).any() & 
-    existing_data['Match Date'].str.contains(selected_date).any()):
+        if match_exists and not index.empty:
             existing_data.loc[index, 'In Possession Goals'] = in_possession
             existing_data.loc[index, 'Out of Possession Goals'] = out_possession
             existing_data.loc[index, 'Veo Hyperlink'] = veo_hyperlink
