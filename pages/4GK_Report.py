@@ -243,6 +243,15 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         orientation=pfp.PitchOrientation.VERTICAL
     )
 
+    markdown_content = f"""
+    <div style="font-family: Arial, sans-serif; font-size: 20px;">
+        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xg_sum}
+    </div>
+    """
+    
+    # Display the markdown
+    st.markdown(markdown_content, unsafe_allow_html=True)
+
     for index, row in xg.iterrows():
         y, x, xG, url = row['X'], row['Y'], row['xG'], row['Video Link']
 
