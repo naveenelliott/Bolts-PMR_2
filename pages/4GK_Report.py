@@ -235,6 +235,17 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
     xg_sum = xg['xG'].sum()
     ga = gk_data['Goal Against'][0].astype(float)
 
+    xga_sum = round(xg_sum, 2)
+
+    markdown_content = f"""
+    <div style="font-family: Arial, sans-serif; font-size: 20px;">
+        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xga_sum}
+    </div>
+    """
+    
+    # Display the markdown
+    st.markdown(markdown_content, unsafe_allow_html=True)
+
     dimensions = PitchDimensions(pitch_length_metres=100, pitch_width_metres=100)
     fig1 = pfp.make_pitch_figure(
         dimensions,
@@ -243,14 +254,6 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         orientation=pfp.PitchOrientation.VERTICAL
     )
 
-    markdown_content = f"""
-    <div style="font-family: Arial, sans-serif; font-size: 20px;">
-        <strong>Goals Against:</strong> {ga} | <strong>xG Against:</strong> {xg_sum}
-    </div>
-    """
-    
-    # Display the markdown
-    st.markdown(markdown_content, unsafe_allow_html=True)
 
     for index, row in xg.iterrows():
         y, x, xG, url = row['X'], row['Y'], row['xG'], row['Video Link']
