@@ -4,81 +4,84 @@ from GettingFullActions import UpdatingActions
 from GettingPSDLineupData import getting_PSD_lineup_data
 
 # Setting the title of the PMR App in web browser
-st.set_page_config(page_title='Bolts Post-Match Review App', page_icon = 'pages/Boston_Bolts.png')
-
+st.set_page_config(page_title='Bolts Post-Match Review App', page_icon='pages/Boston_Bolts.png')
 
 st.sidebar.success('Select a page above.')
 
-# this updates actions
+# This updates actions
 combined_actions = UpdatingActions()
 
-# these are the allowable teams that we have event data for
+# These are the allowable teams that we have event data for
 bolts_allowed = pd.Series(combined_actions['Team'].unique())
 opp_allowed = pd.Series(combined_actions['Opposition'].unique())
 
-
+# Getting and processing lineup data
 combined_df = getting_PSD_lineup_data()
 combined_df['Starts'] = combined_df['Starts'].astype(float)
-combined_df['Date'] = pd.to_datetime(combined_df['Date'])
-combined_df['Date'] = combined_df['Date'].dt.strftime('%m/%d/%Y')
-
+combined_df['Date'] = pd.to_datetime(combined_df['Date']).dt.strftime('%m/%d/%Y')
 combined_df = combined_df.loc[combined_df['Team Name'].isin(bolts_allowed) & combined_df['Opposition'].isin(opp_allowed)].reset_index(drop=True)
 
+# Handling special cases for player positions
 combined_df.loc[combined_df['Player Full Name'] == 'Casey Powers', 'Position Tag'] = 'GK'
-gk_dataframe = combined_df.loc[combined_df['Position Tag'] == 'GK'].reset_index(drop=True)
-gk_dataframe = gk_dataframe.drop_duplicates().reset_index(drop=True)
+
+# Goalkeeper-specific DataFrame
+gk_dataframe = combined_df.loc[combined_df['Position Tag'] == 'GK'].reset_index(drop=True).drop_duplicates().reset_index(drop=True)
 st.session_state['complete_gk_df'] = gk_dataframe.copy()
 
-
-combined_df = combined_df.drop_duplicates().reset_index(drop=True)
-
-# creating a transferrable copy of the combined dataset
+# Creating a transferrable copy of the combined dataset
 st.session_state['overall_df'] = combined_df.copy()
 
-
-
+# Main application title and introduction
 st.title("Bolts Post-Match Review App")
-
 st.markdown("Select the Team, Opponent, and Date (Optional) to See the Post-Match Review")
 
+# Selecting the Bolts team
 teams = list(combined_df['Team Name'].unique())
-if "selected_team" not in st.session_state:
-    st.session_state['selected_team'] = teams[0]
-else:
-    # Update the session state if a different team is selected
-    selected_team = st.selectbox('Choose the Bolts Team:', teams)
-    if selected_team != st.session_state['selected_team']:
-        st.session_state['selected_team'] = selected_team
+
+selected_team = st.session_state.get('selected_team', teams[0])
+if selected_team not in teams:
+    selected_team = teams[0]  # Default to the first date if not found
+
+selected_team = st.selectbox('Choose the Bolts Team:', teams, index=teams.index(selected_team))
+st.session_state['selected_team'] = selected_team
+
+# Filtering based on the selected team
 combined_df = combined_df.loc[combined_df['Team Name'] == st.session_state['selected_team']]
 
+# Selecting the opponent team
 opps = list(combined_df['Opposition'].unique())
-# Use session state to store the selected opponent and update it whenever a new opponent is selected
-if "selected_opp" not in st.session_state:
-    st.session_state["selected_opp"] = opps[0] 
-else:
-    selected_opp = st.selectbox('Choose the Opposition:', opps)
-    if selected_opp != st.session_state["selected_opp"]:
-        st.session_state["selected_opp"] = selected_opp
+
+selected_opp = st.session_state.get('selected_opp', opps[0])
+if selected_opp not in opps:
+    selected_opp = opps[0]  # Default to the first date if not found
+selected_opp = st.selectbox('Choose the Opposition:', opps, index=opps.index(selected_opp))
+st.session_state['selected_opp'] = selected_opp
+
+# Filtering based on the selected opponent
 combined_df = combined_df.loc[combined_df['Opposition'] == st.session_state['selected_opp']]
 
-combined_df['Date'] = pd.to_datetime(combined_df['Date']).dt.strftime('%m/%d/%Y')
-date = list(combined_df['Date'].unique())
-if 'selected_date' not in st.session_state:
-    st.session_state['selected_date'] = date[0]
-else:
-    selected_date = st.selectbox('Choose the Date (if necessary)', date)
-    if selected_date != st.session_state['selected_date']:
-        st.session_state['selected_date'] = selected_date
+# Selecting the date
+dates = list(combined_df['Date'].unique())
 
-# Filter the DataFrame based on the selected date
+# Check if the selected date in the session state exists in the list of dates
+selected_date = st.session_state.get('selected_date', dates[0])
+if selected_date not in dates:
+    selected_date = dates[0]  # Default to the first date if not found
+
+# Create the selectbox for the date
+selected_date = st.selectbox('Choose the Date (if necessary)', dates, index=dates.index(selected_date))
+st.session_state['selected_date'] = selected_date
+
+# Filtering based on the selected date
 combined_df = combined_df.loc[combined_df['Date'] == st.session_state['selected_date']]
 
-# Initialize prev_player in session state if not already present
-
+# Storing the filtered DataFrame in session state
 st.session_state["combined_df"] = combined_df
-combined_df_copy = combined_df.copy()
-st.session_state['combined_df_copy'] = combined_df_copy
+st.session_state['combined_df_copy'] = combined_df.copy()
 
-# TEMPORARY
+# TEMPORARY: Goalkeeper-specific DataFrame for current selection
 gk_dataframe = combined_df.loc[combined_df['Position Tag'] == 'GK'].reset_index(drop=True)
 st.session_state['gk_df'] = gk_dataframe
+
+# Display any relevant information or widgets below this line
+
