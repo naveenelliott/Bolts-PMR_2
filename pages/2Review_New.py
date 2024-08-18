@@ -1359,7 +1359,6 @@ with col2:
     time_until_regain = (time_until_regain/total_mins_played) * 990
     fig2 = MiddlePMRStreamlit(team=our_team, opp=opposition, date=our_date, avg_bolts_xg=bolts_mean, avg_opp_xg=opp_mean, our_xT=bolts_xT, avg_xT=mean_xT, 
                               stdev_xT=std_xT, regain_time=time_until_regain)
-    st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot(fig2)
 
 
