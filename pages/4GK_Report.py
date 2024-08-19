@@ -21,6 +21,7 @@ import plotly.graph_objs as go
 from streamlit_gsheets import GSheetsConnection
 
 #st.set_page_config(layout='wide')
+st.set_page_config(page_title='Bolts Post-Match Review App', page_icon = 'pages/Boston_Bolts.png')
 
 # adding in data from PMRApp
 combined_df = st.session_state["combined_df"]
