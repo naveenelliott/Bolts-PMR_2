@@ -3,8 +3,10 @@ import pandas as pd
 import numpy as np
 from streamlit_gsheets import GSheetsConnection
 
-st.title("Goalkeeper Report Input File")
 st.set_page_config(page_title='Bolts Post-Match Review App', page_icon = 'pages/Boston_Bolts.png')
+
+st.title("Goalkeeper Report Input File")
+
 
 gk_data = st.session_state['gk_df']
 gks = list(gk_data['Player Full Name'].unique())
