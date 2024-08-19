@@ -205,8 +205,8 @@ def MiddlePMRStreamlit(team, opp, date, avg_opp_xg, avg_bolts_xg, our_xT, avg_xT
     important.iloc[0] = important.iloc[0].apply(round_to_nearest_10)
 
     dummy_df = pd.DataFrame(columns=important.columns)
-    for i in range(10):
-        dummy_df.loc[i] = [i * 11] * len(important.columns)
+    for i in range(11):
+        dummy_df.loc[i] = [i * 10] * len(important.columns)
         i = i + 1
 
     fig, ax = plt.subplots(figsize=(6, 5))
