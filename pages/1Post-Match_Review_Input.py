@@ -8,7 +8,7 @@ selected_opp = st.session_state.get("selected_opp")
 selected_date = st.session_state.get("selected_date")
 
 
-st.set_page_config(layout='wide, page_title='Bolts Post-Match Review App', page_icon='pages/Boston_Bolts.png'')
+st.set_page_config(layout='wide', page_title='Bolts Post-Match Review App', page_icon='pages/Boston_Bolts.png'')
 
 # Establishing a Google Sheets connection
 conn = st.connection('gsheets', type=GSheetsConnection)
