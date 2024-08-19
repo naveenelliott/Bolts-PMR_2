@@ -1391,7 +1391,7 @@ for index, row in bolts_xg_data.iterrows():
             mode='markers+text',
             marker=dict(
                 size=(xG * 30) + 5,  # Adjusted for Plotly's scaling
-                color='lightblue',
+                color='#6bb2e2',
                 symbol='circle'
             ),
             name='Goal',
@@ -1415,7 +1415,7 @@ for index, row in bolts_xg_data.iterrows():
             marker=dict(
                 size=(xG * 30) + 5,
                 color='white',
-                line=dict(color='lightblue', width=3),
+                line=dict(color='#6bb2e2', width=3),
                 symbol='circle'
             ),
             name='SOT',
@@ -1438,7 +1438,7 @@ for index, row in bolts_xg_data.iterrows():
             mode='markers',
             marker=dict(
                 size=(xG * 30) + 5,
-                color='lightblue',
+                color='#6bb2e2',
                 symbol='circle-open'
             ),
             name='Shot',
@@ -1461,7 +1461,7 @@ fig1.add_trace(go.Scatter(
     mode='markers',
     marker=dict(
         size=10,
-        color='lightblue',
+        color='#6bb2e2',
         symbol='circle'
     ),
     name='Goal',
@@ -1475,7 +1475,7 @@ fig1.add_trace(go.Scatter(
     marker=dict(
         size=10,
         color='white',
-        line=dict(color='lightblue', width=3),
+        line=dict(color='#6bb2e2', width=3),
         symbol='circle'
     ),
     name='SOT',
@@ -1488,7 +1488,7 @@ fig1.add_trace(go.Scatter(
     mode='markers',
     marker=dict(
         size=10,
-        color='lightblue',
+        color='#6bb2e2',
         symbol='circle-open'
     ),
     name='Shot',
