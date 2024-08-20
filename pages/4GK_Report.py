@@ -18,6 +18,7 @@ from plotly_football_pitch import make_pitch_figure, PitchDimensions
 import plotly_football_pitch as pfp
 import plotly.graph_objs as go
 from streamlit_gsheets import GSheetsConnection
+from GoalkeeperHeatmap import goalkeeperHeatmap
 
 #st.set_page_config(layout='wide')
 st.set_page_config(page_title='Bolts Post-Match Review App', page_icon = 'pages/Boston_Bolts.png')
@@ -463,6 +464,10 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
 
     with col1:
         st.plotly_chart(fig1)
+
+    with col2:
+        fig = goalkeeperHeatmap(full_actions_copy, gk_name)
+        st.pyplot(fig)
 
 
 
