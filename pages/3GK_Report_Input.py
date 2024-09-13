@@ -61,7 +61,7 @@ if (existing_data['Bolts Team'].str.contains(selected_team).any() &
 with st.form("input_form"):
     in_possession = st.text_input("In Possession:", value=in_possession)
     out_possession = st.text_input("Out of Possession:", value=out_possession)
-    veo_hyperlink = st.text_input("Veo Hyperlink:", value=veo_hyperlink)
+    veo_hyperlink = st.text_input("Veo Hyperlink (optional):", value=veo_hyperlink)
     coach_notes = st.text_input("Coach Notes:", value=coach_notes)
     submit_button = st.form_submit_button(label='Save')
 
@@ -100,6 +100,6 @@ with st.form("input_form"):
 
 st.write(f"In Possession Current Goals: {in_possession}")
 st.write(f"Out Possession Current Goals: {out_possession}")
-st.write(f"Veo Hyperlink: {veo_hyperlink}")
+st.write(f"Veo Hyperlink: {veo_hyperlink or 'None provided'}")
 st.write(f"Competition Level: {coach_notes}")
 
