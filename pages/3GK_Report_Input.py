@@ -67,7 +67,7 @@ with st.form("input_form"):
 
     if submit_button:
         # Ensure all fields are filled
-        if not in_possession or not out_possession or not veo_hyperlink or not coach_notes:
+        if not in_possession or not out_possession or not coach_notes:
             st.warning('Ensure all fields are filled')
             st.stop()
         
