@@ -630,6 +630,8 @@ if not pd.isna(gk_info['Vasily Notes']).any() and not gk_info.empty:
         # Assuming gettingGameGrade and GKEventFunction are functions that operate on the filtered_df
         xT_temp_grade = GKEventFunction(temp_event_df, select_temp_df)
         xT_temp_grade = xT_temp_grade.at[0, 'xT per Pass']
+        st.write(filtered_game_grade)
+        st.write(xT_temp_grade)
         game_grade = gettingGameGrade(filtered_game_grade, xT_temp_grade)
 
         final_game_grade = pd.concat([final_game_grade, game_grade], ignore_index=True)
